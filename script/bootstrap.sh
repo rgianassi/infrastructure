@@ -3,7 +3,7 @@
 #
 # Runs initial salt stack bootstrap on a freshly installed system.
 # Must be run only once on salt master.
-# This script cleanups after itself.
+# Cleanup is performed by "normal" configuration.
 #
 
 # Unset variables are errors.
@@ -26,7 +26,7 @@ _PILLAR_ROOTS_FILE=${BS_PILLAR_ROOTS_FILE:-/etc/salt/master.d/91-pillar-roots.co
 
 _SALT_MASTER_SERVICE=${BS_SALT_MASTER_SERVICE:-salt-master}
 
-_SLEEP=10
+_SLEEP=30
 
 ###############################################################################
 # Runs some sanity checks.
@@ -97,9 +97,7 @@ sleep ${_SLEEP}
 
 # Runs the initial bootstrap.
 salt 'salt' state.apply
-
-# Cleanups the initial bootstrap.
-rm -rf "${_SRV_SALT_DIR}"
+sleep ${_SLEEP}
 
 # Reconfigure the service
 systemctl daemon-reload
