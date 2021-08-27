@@ -3,7 +3,7 @@ github.com:
     - present
     - user: root
     - enc: ssh-rsa
-    - fingerprint: nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8
+    - fingerprint: 9d:38:5b:83:a9:17:52:92:56:1a:5e:c4:d4:81:8e:0a:ca:51:a2:64:f1:74:20:11:2e:f8:8a:c3:a1:39:49:8f
     - fingerprint_hash_type: sha256
 
 saltmaster_repository:
