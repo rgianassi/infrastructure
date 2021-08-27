@@ -1,3 +1,6 @@
+# Mantains salt master repository up to date.
+#
+
 github.com:
   ssh_known_hosts:
     - present
