@@ -6,5 +6,4 @@
 !.gitignore
 
 # and also:
-!/pillar/
-!/salt/
+!/*.sls
