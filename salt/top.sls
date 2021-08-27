@@ -1,6 +1,9 @@
-base:
-  '*':
-    - core
-    - edit
-    - vivaldi
+#base:
+#  '*':
+#    - core
+#    - edit
+#    - vivaldi
 
+base:
+  'salt':
+    - saltmaster
