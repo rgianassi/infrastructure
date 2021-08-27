@@ -26,6 +26,8 @@ _PILLAR_ROOTS_FILE=${BS_PILLAR_ROOTS_FILE:-/etc/salt/master.d/91-pillar-roots.co
 
 _SALT_MASTER_SERVICE=${BS_SALT_MASTER_SERVICE:-salt-master}
 
+_SLEEP=10
+
 ###############################################################################
 # Runs some sanity checks.
 #
@@ -66,9 +68,6 @@ fi
 # Installs git.
 apt install -y git
 
-# Stops salt master service.
-systemctl stop salt-master
-
 # Cleanups previous runs if any.
 if [ -f "${_FILE_ROOTS_FILE}" ]; then
     rm -f "${_FILE_ROOTS_FILE}"
@@ -92,7 +91,9 @@ mv    "${_SRV_BOOTSTRAP_DIR}" "${_SRV_SALT_DIR}"
 
 # Starts service to apply bootstrap state.
 systemctl daemon-reload
+systemctl stop salt-master
 systemctl start salt-master
+sleep ${_SLEEP}
 
 # Runs the initial bootstrap.
 salt 'salt' state.apply
@@ -101,12 +102,10 @@ salt 'salt' state.apply
 rm -rf "${_SRV_SALT_DIR}"
 
 # Reconfigure the service
-systemctl stop salt-master
 systemctl daemon-reload
+systemctl stop salt-master
 systemctl start salt-master
-
-# Runs the "real" bootstrap.
-salt '*' state.apply
+sleep ${_SLEEP}
 
 echo "Bootstrap completed." >&2
 echo "" >&2
