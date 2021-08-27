@@ -6,6 +6,4 @@
 !.gitignore
 
 # and also:
-!/config/
-!/pillar/
-!/salt/
+!/master
