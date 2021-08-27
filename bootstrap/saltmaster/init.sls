@@ -3,6 +3,6 @@ include:
   - saltmaster.repository
 
 saltmaster_requirements:
-  pkg.installed:
+  pkg.latest:
     - names:
       - git

@@ -1,15 +1,8 @@
-include:
-  - core.repositories
-
-core-packages:
-  pkg.installed:
-    - names:
-      - bash
-      - git
-      - htop
-      - keepassxc
-      - tree
-      - zsh
+# Create true_home for users inside home folder.
+#
+# note: this temporarly here, but must be moved on SLS formula for users
+#   creation when available.
+#
 
 true_home:
   file.directory:
@@ -23,4 +16,3 @@ true_home:
       - group
       - mode
       - ignore_dirs
-
