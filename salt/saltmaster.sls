@@ -28,3 +28,5 @@ saltmaster_repository:
     - require:
       - pkg: git
       - ssh_known_hosts: github.com
+  file.absent:
+    - name: /srv/salt
