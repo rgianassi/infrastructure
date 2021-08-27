@@ -11,6 +11,7 @@
 !/LICENSE
 
 !/bootstrap/
+!/files/
 !/pillar/
 !/salt/
 !/script/
