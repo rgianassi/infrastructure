@@ -1,3 +1,6 @@
+include:
+  - core.repositories
+
 core-packages:
   pkg.installed:
     - names:
