@@ -6,6 +6,6 @@
 !.gitignore
 
 # and also:
-!/core/
-!/edit/
-!/vivaldi/
+!/*.sls
+
+!/saltmaster/

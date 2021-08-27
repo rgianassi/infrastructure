@@ -6,6 +6,11 @@
 !.gitignore
 
 # and also:
-!/config/
+!/*.md
+
+!/LICENSE
+
+!/bootstrap/
 !/pillar/
 !/salt/
+!/script/

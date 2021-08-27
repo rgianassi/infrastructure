@@ -6,4 +6,7 @@
 !.gitignore
 
 # and also:
-!/master
+!/*.sh
+!/*.cmd
+
+!/files/
