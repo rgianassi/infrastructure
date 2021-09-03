@@ -1,5 +1,8 @@
 software_installed:
   pkg.latest:
     - names:
-      - htop
-      - tree
+      {% for configuration, packages in pillar.get('software', {}).items() %}
+      {% for package in packages %}
+      - {{package}}
+      {% endfor %}
+      {% endfor %}

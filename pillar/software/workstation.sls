@@ -1,0 +1,4 @@
+software:
+  workstation:
+    - htop
+    - tree
