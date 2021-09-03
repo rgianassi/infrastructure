@@ -1,4 +1,5 @@
 base:
   '*':
     - core
+    - users
 
