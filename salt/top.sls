@@ -1,11 +1,13 @@
 base:
   '*':
     - core
+    - users
+
   'minion2':
     - core
     - keepassxc
     - software
-    #- truehome
     - vivaldi
+
   'salt':
     - saltmaster
