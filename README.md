@@ -12,3 +12,28 @@ At this point, you are ready to run [the Bootstrap Salt installation script](scr
 Register all minions (including the Salt master itself) with the Salt master.
 On Salt master, create a SSH key and upload it to GitHub. Clone the infrastructure repository and run the [bootstrap](script/bootstrap.sh) script.
 The VM is ready to go.
+
+## Check pillar data
+
+To check pillar data use the following commands:
+
+```bash
+sudo salt '*' saltutil.refresh_pillar
+sudo salt '*' pillar.items
+```
+
+## Secrets encryption
+
+When saving sensitive data to control version, use one of the following commands:
+
+```bash
+echo -n "supersecret" | gpg --armor --batch --trust-model always --encrypt -r 598EC3F324A85B2DFD81F3F488747A7697B4D30A
+mkpasswd -m sha-512 | gpg --armor --batch --trust-model always --encrypt -r 598EC3F324A85B2DFD81F3F488747A7697B4D30A
+gpg --armor --batch --trust-model always --encrypt -r 598EC3F324A85B2DFD81F3F488747A7697B4D30A < pass.txt
+```
+
+To use that, you need the public key [598EC3F324A85B2DFD81F3F488747A7697B4D30A](files/exported_gpg_salt.key). To import it in your system under your account:
+
+```bash
+gpg --import files/exported_gpg_salt.key
+```

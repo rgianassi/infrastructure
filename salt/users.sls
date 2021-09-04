@@ -61,3 +61,9 @@ oh_my_zsh_{{name}}:
 {% endif %}
 
 {% endfor %}
+
+users_dave_absent:
+  user.absent:
+    - name: dave
+    - purge: True
+    - force: True
