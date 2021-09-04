@@ -6,7 +6,6 @@
 {%- set user = {} -%}
 {%- endif -%}
 
-{%- set user_files = salt['pillar.get'](('users:' ~ name ~ ':user_files'), {'enabled': False}) -%}
 {%- set home = user.get('home', "/home/%s" %name) -%}
 {%- set user_group = name -%}
 
@@ -43,27 +42,58 @@ users_{{name}}_true_home:
     - makedirs: True
     - require:
       - user: {{name}}
+      - group: {{name}}
 
-{% if user_files.enabled %}
 xsession_{{name}}:
   file.managed:
     - name: {{home}}/.xsession
+    - user: {{name}}
+    - group: {{name}}
     - source: salt://files/.xsession
     - require:
       - user: {{name}}
+      - group: {{name}}
 
 oh_my_zsh_{{name}}:
   git.latest:
     - name: git://github.com/robbyrussell/oh-my-zsh.git
+    - rev: master
     - target: {{home}}/.oh-my-zsh
+    - user: {{name}}
+    - unless: "test -d {{home}}/.oh-my-zsh"
+    - onlyif: "test -d {{home}}"
     - require:
       - user: {{name}}
-{% endif %}
+      - group: {{name}}
+      - pkg: zsh
 
+set_oh_my_zsh_folder_and_file_permissions_{{name}}:
+  file.directory:
+    - name: {{home}}/.oh-my-zsh
+    - user: {{name}}
+    - group: {{name}}
+    - file_mode: 744
+    - dir_mode: 755
+    - makedirs: True
+    - recurse:
+      - user
+      - group
+      - mode
+    - require:
+      - git: oh_my_zsh_{{name}}
+
+zshrc_{{name}}:
+  file.managed:
+    - name: {{home}}/.zshrc
+    - source: salt://files/.zshrc
+    - user: {{name}}
+    - group: {{name}}
+    - mode: 644
+    - template: jinja
+    - context:
+      theme: {{user['zshrc_theme']}}
+      plugins: {{user['zshrc_plugins']}}
+    - require:
+      - git: oh_my_zsh_{{name}}
+      - file: set_oh_my_zsh_folder_and_file_permissions_{{name}}
 {% endfor %}
-
-users_dave_absent:
-  user.absent:
-    - name: dave
-    - purge: True
-    - force: True

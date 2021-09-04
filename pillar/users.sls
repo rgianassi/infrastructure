@@ -2,16 +2,16 @@
 
 users:
 
-  dave2:
+  dave:
     fullname: Dave Thomas
-    uid: 2002
+    uid: 2003
     shell: /bin/zsh
+    zshrc_theme: robbyrussell
+    zshrc_plugins: 'git colored-man-pages'
     groups:
       - adm
       - sudo
       - docker
-    user_files:
-      enabled: true
     password: |
       -----BEGIN PGP MESSAGE-----
 
