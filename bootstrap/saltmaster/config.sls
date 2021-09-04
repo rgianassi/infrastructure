@@ -1,15 +1,15 @@
 master_file_roots:
   file.managed:
-    - name: /etc/salt/master.d/90-file-roots.conf
+    - name: /etc/salt/master.d/file-roots.conf
     - user: root
     - group: root
     - mode: 644
-    - source: salt://saltmaster/files/90-file-roots.conf
+    - source: salt://saltmaster/files/file-roots.conf
 
 master_pillar_roots:
   file.managed:
-    - name: /etc/salt/master.d/91-pillar-roots.conf
+    - name: /etc/salt/master.d/pillar-roots.conf
     - user: root
     - group: root
     - mode: 644
-    - source: salt://saltmaster/files/91-pillar-roots.conf
+    - source: salt://saltmaster/files/pillar-roots.conf
