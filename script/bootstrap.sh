@@ -21,8 +21,8 @@ _SRV_BOOTSTRAP_DIR=${BS_SRV_BOOTSTRAP_DIR:-/srv/bootstrap}
 _SRV_SALT_DIR=${BS_SRV_SALT_DIR:-/srv/salt}
 _SRV_MAIN_DIR=${BS_SRV_MAIN_DIR:-/srv/main}
 
-_FILE_ROOTS_FILE=${BS_FILE_ROOTS_FILE:-/etc/salt/master.d/90-file-roots.conf}
-_PILLAR_ROOTS_FILE=${BS_PILLAR_ROOTS_FILE:-/etc/salt/master.d/91-pillar-roots.conf}
+_FILE_ROOTS_FILE=${BS_FILE_ROOTS_FILE:-/etc/salt/master.d/file-roots.conf}
+_PILLAR_ROOTS_FILE=${BS_PILLAR_ROOTS_FILE:-/etc/salt/master.d/pillar-roots.conf}
 
 _SALT_MASTER_SERVICE=${BS_SALT_MASTER_SERVICE:-salt-master}
 
