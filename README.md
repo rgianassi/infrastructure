@@ -37,3 +37,26 @@ To use that, you need the public key [598EC3F324A85B2DFD81F3F488747A7697B4D30A](
 ```bash
 gpg --import files/exported_gpg_salt.key
 ```
+
+## Commit code
+
+This project uses Python version of [Commitizen](https://github.com/commitizen-tools/commitizen) to create conventional commits.
+To create a commit that follows [Conventional commits](https://www.conventionalcommits.org/) run:
+
+```bash
+cz commit
+```
+
+To check if commits are in the right format run:
+
+```bash
+cz check --rev-range HEAD
+```
+
+To bump the version and update the CHANGELOG run:
+
+```bash
+cz bump --changelog
+```
+
+The tool automagically observes [Semantic Versioning](https://semver.org) and [keep a changelog](https://keepachangelog.com/en/1.0.0/).
