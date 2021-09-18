@@ -6,6 +6,8 @@
 !.gitignore
 
 # and also:
+!/.cz.yaml
+!/.pre-commit-config.yaml
 !/*.md
 
 !/LICENSE
