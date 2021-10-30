@@ -1,3 +1,10 @@
+## 0.2.0 (2021-10-30)
+
+### Feat
+
+- Set OpenSSH configuration
+- Install openssh server on salt master
+
 ## 0.1.0 (2021-09-18)
 
 ### Fix
