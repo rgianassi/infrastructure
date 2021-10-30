@@ -49,7 +49,7 @@ xsession_{{name}}:
     - name: {{home}}/.xsession
     - user: {{name}}
     - group: {{name}}
-    - source: salt://files/.xsession
+    - source: salt://files/home/.xsession
     - require:
       - user: {{name}}
       - group: {{name}}
@@ -85,7 +85,7 @@ set_oh_my_zsh_folder_and_file_permissions_{{name}}:
 zshrc_{{name}}:
   file.managed:
     - name: {{home}}/.zshrc
-    - source: salt://files/.zshrc
+    - source: salt://files/home/.zshrc
     - user: {{name}}
     - group: {{name}}
     - mode: 644

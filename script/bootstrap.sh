@@ -105,7 +105,10 @@ systemctl stop salt-master
 systemctl start salt-master
 sleep ${_SLEEP}
 
+echo "" >&2
+echo "******************************************************************************" >&2
 echo "Bootstrap completed." >&2
+echo "******************************************************************************" >&2
 echo "" >&2
 
 exit 0

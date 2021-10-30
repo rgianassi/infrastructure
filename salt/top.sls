@@ -9,6 +9,7 @@
 base:
   'salt':
     - saltmaster
+    - openssh
 
   '*':
     - software

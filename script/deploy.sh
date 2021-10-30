@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Checkouts a branch on salt folders.
+# Deploys the main branch (production) on salt folders.
 # Assumes bootstrap.sh script has already run.
 #
 
@@ -35,19 +35,27 @@ if [ "$($whoami)" != "root" ]; then
 fi
 
 ###############################################################################
-# checkout.
+# deploy.
 #
 
 if [ -d "${_SRV_MAIN_DIR}" ]; then
     rm -rf "${_SRV_MAIN_DIR}"
 fi
 
+# Forces repository to be in main branch.
+git fetch --all --prune --tags
+git reset --hard origin/main
+
 # Copies repository in expected place.
 cp -r "${_SRV_REPO_DIR}" "${_SRV_MAIN_DIR}"
 
+# Runs saltmaster to update system.
+clear
+salt '*' state.apply
+
 echo "" >&2
 echo "******************************************************************************" >&2
-echo "Checkout completed." >&2
+echo "Deploy completed." >&2
 echo "******************************************************************************" >&2
 echo "" >&2
 

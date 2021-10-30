@@ -12,6 +12,7 @@ users:
       - adm
       - sudo
       - docker
+      - sshers
     password: |
       -----BEGIN PGP MESSAGE-----
 
