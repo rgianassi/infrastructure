@@ -1,0 +1,53 @@
+[user]
+	name = Roberto Gianassi
+	email = roberto@develer.com
+
+[core]
+	editor = vim
+	autocrlf = input
+
+[branch]
+	autosetupmerge = 1
+
+[format]
+	headers = "Organization: Develer S.r.l.\n"
+
+[sendmail]
+	smtpserver = smtp.develer.com
+	smtpuser = roberto
+	smtpssl = true
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	interactive = auto
+	ui = auto
+
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset %C(magenta)%G?%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
+	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+	diffnb = diff --ignore-space-at-eol -b -w --ignore-blank-lines
+	diffnw = diff -w -U0 --word-diff-regex=[^[:space:]]
+	odoo = "!f() { for repo in $(find ~/true_home/repo -name .git 2> /dev/null); do cd \"$(dirname ${repo})\"; DATES=$(git log --all --no-merges --since 'last year' --author \"$(git config user.name)\" --pretty=format:'%cd' --date=short | uniq); if [ -n \"${DATES}\" ]; then tput rev; pwd; tput sgr0; for date in ${DATES}; do tput setaf 1; echo \"${date}\"; tput sgr0; git log --all --no-merges --since 'last year' --author \"$(git config user.name)\" --pretty=format:'%cd%s' --date=short | grep \"${date}\" | colrm 1 10; done; echo; fi; done; }; f;"
+
+[push]
+	default = simple
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[cola]
+	spellcheck = false
+
+[gui]
+	editor = vim
+
+[commit]
+	template = /home/roberto/.git-commit-msg-template
+
+[credential]
+	helper = store
