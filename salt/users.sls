@@ -96,4 +96,15 @@ zshrc_{{name}}:
     - require:
       - git: oh_my_zsh_{{name}}
       - file: set_oh_my_zsh_folder_and_file_permissions_{{name}}
+
+gitconfig_{{name}}:
+  file.managed:
+    - name: {{home}}/.gitconfig
+    - user: {{name}}
+    - group: {{name}}
+    - source: salt://files/home/.gitconfig
+    - require:
+      - user: {{name}}
+      - group: {{name}}
+      - pkg: git
 {% endfor %}
