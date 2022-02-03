@@ -3,7 +3,7 @@
     - name: /etc/ssh/sshd_config.d/hardening.conf
     - user: root
     - group: root
-    - mode: 644
+    - mode: '0644'
     - source: salt://files/etc/ssh/sshd_config.d/hardening.conf
     - require:
       - pkg: openssh-server
@@ -13,7 +13,7 @@
     - name: /etc/ssh/banner
     - user: root
     - group: root
-    - mode: 644
+    - mode: '0644'
     - source: salt://files/etc/ssh/banner
     - require:
       - pkg: openssh-server
