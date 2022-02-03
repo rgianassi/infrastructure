@@ -3,6 +3,6 @@ software_installed:
     - names:
       {% for configuration, packages in pillar.get('software', {}).items() %}
       {% for package in packages %}
-      - {{package}}
+      - {{ package }}
       {% endfor %}
       {% endfor %}
