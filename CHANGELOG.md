@@ -1,3 +1,10 @@
+## 0.4.0 (2022-12-28)
+
+### Feat
+
+- Add Vivaldi browser docker image
+- Add gitconfig
+
 ## 0.3.0 (2021-10-30)
 
 ### Feat
