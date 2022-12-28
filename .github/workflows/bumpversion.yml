@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     name: "Bump version and create changelog with commitizen"
     steps:
+      - name: Check out
+        uses: actions/checkout@v2
+        with:
+          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+          fetch-depth: 0
       - name: Import GPG Key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5
@@ -20,11 +25,6 @@ jobs:
           git_tag_gpgsign: true
           git_push_gpgsign: true
           fingerprint: "16FBC856FB2F39BDAEC90E1BABF2A32B13946132"
-      - name: Check out
-        uses: actions/checkout@v2
-        with:
-          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
-          fetch-depth: 0
       - name: Create bump and changelog
         uses: commitizen-tools/commitizen-action@master
         with:
