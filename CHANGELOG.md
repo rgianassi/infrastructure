@@ -1,3 +1,13 @@
+## 0.5.0 (2022-12-28)
+
+### Feat
+
+- Add a script to run grist
+
+### Fix
+
+- Fix version bumping
+
 ## 0.4.0 (2022-12-28)
 
 ### Feat
