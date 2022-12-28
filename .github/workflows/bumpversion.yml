@@ -25,6 +25,10 @@ jobs:
           git_tag_gpgsign: true
           git_push_gpgsign: true
           fingerprint: "16FBC856FB2F39BDAEC90E1BABF2A32B13946132"
+      - name: Remove CHANGELOG.md
+        uses: JesseTG/rm@v1.0.3
+        with:
+          path: CHANGELOG.md
       - name: Create bump and changelog
         uses: commitizen-tools/commitizen-action@master
         with:
