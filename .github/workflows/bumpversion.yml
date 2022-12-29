@@ -16,6 +16,7 @@ jobs:
           git branch -m main
           git config user.name Roberto Gianassi
           git config user.email roberto.gianassi+github.actions@gmail.com
+          git commit --allow-empty -n -m "Initial commit."
       - name: Checkout the repo
         uses: actions/checkout@v3
         with:
@@ -43,5 +44,4 @@ jobs:
         with:
           body_path: "body.md"
           tag_name: ${{ env.REVISION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
